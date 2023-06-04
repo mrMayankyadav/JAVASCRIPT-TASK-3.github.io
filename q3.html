@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JAVASCRIPT TASK 3</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="mx-auto pt-5" style="width:700px">
+            <div class="row pb-3">
+                <div class="col-3 text-end">Name:</div>
+                <div class="col-5">
+                    <input type="text" id="t1"/>
+                </div>
+                <div class="col-4">
+                    <txt id="d1" style="color:red"></txt>
+                </div>
+            </div>
+
+            <div class="row pb-3">
+                <div class="col-3 text-end">Email:</div>
+                <div class="col-5">
+                    <input type="text" id="t2"/>
+                </div>
+                <div class="col-4">
+                    <txt id="d2" style="color:red"></txt>
+                </div>
+            </div>
+
+            <div class="row pb-3">
+                <div class="col-3 text-end">Website:</div>
+                <div class="col-5">
+                    <input type="text" id="t3"/>
+                </div>
+                <div class="col-4">
+                    <txt id="d3" style="color:red"></txt>
+                </div>
+            </div>
+
+            <div class="row pb-3">
+                <div class="col-3 text-end">Message:</div>
+                <div class="col-5">
+                    <textarea id="t4" style="width:250px; height: 80px;"></textarea>
+                </div>
+                <div class="col-4">
+                    <txt id="d4" style="color:red"></txt>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-6 mx-auto">
+                    <input type="button" value="Submit" onclick="valid()"/>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            function valid()
+            {
+                var name=document.getElementById("t1").value;
+                var email=document.getElementById("t2").value;
+                var web=document.getElementById("t3").value;
+                var msg=document.getElementById("t4").value;
+
+                if(name.length==0)
+                {
+                    document.getElementById("t1").style.border="2px solid red";
+                    document.getElementById("d1").innerText= "This field is required";
+                }
+                else
+                {
+                    document.getElementById("t1").style.border="2px solid green";
+                    document.getElementById("d1").innerText= "";
+                }
+                if(email.length==0 ||!validateEmail(email))
+                {   
+                    document.getElementById("t2").style.border="2px solid red";
+                    document.getElementById("d2").innerText= "A valid email address is required";
+                }
+                else
+                {
+                    document.getElementById("t2").style.border="2px solid green";
+                    document.getElementById("d2").innerText= "";
+                }
+                if(web.length==0)
+                {
+                    document.getElementById("t3").style.border="2px solid red";
+                    document.getElementById("d3").innerText= "A valid url is required";
+                }
+                else{
+                    document.getElementById("t3").style.border="2px solid green";
+                    document.getElementById("d3").innerText= "";
+                }
+                if(msg.length==0)
+                {
+                    document.getElementById("t4").style.border="2px solid red";
+                    document.getElementById("d4").innerText= "This field is required";
+                }
+                else
+                {
+                    document.getElementById("t4").style.border="2px solid green";
+                    document.getElementById("d4").innerText= "";
+                }
+
+                function validateEmail(email) {
+                    var atIndex = email.indexOf('@');
+                    
+                    var dotIndex = email.lastIndexOf('.');
+                    return (
+                        atIndex > 0 &&
+                        dotIndex > atIndex + 1 &&
+                        dotIndex < email.length - 1
+                    );
+                }
+            }
+        </script>
+    </body>
+</html>
